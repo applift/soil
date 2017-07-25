@@ -6,6 +6,11 @@ pod "first" {
   runtime = true
   target = "multi-user.target"
 
+  resource {
+    "range.port.default.first.http" = "9200"
+    "range.port.default.first.http2" = ""
+  }
+
   blob "/etc/vpn/users/env" {
     permissions = "0644"
     leave = false

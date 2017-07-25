@@ -26,6 +26,22 @@ func TestConfig_Unmarshal(t *testing.T) {
 				"from-line1":    "true",
 				"from-line2":    "true",
 			},
+			Resource: map[string]*agent.Resource {
+				"port.default": {
+					Allocator: "range",
+					Config: map[string]string{
+						"minor": "10000",
+						"major": "10100",
+					},
+				},
+				"port.overlay": {
+					Allocator: "range",
+					Config: map[string]string{
+						"minor": "10000",
+						"major": "10100",
+					},
+				},
+			},
 		}, config)
 
 	})
@@ -48,6 +64,22 @@ func TestConfig_Unmarshal(t *testing.T) {
 				"from_json":     "true",
 				"from-line1":    "true",
 				"from-line2":    "true",
+			},
+			Resource: map[string]*agent.Resource {
+				"port.default": {
+					Allocator: "range",
+					Config: map[string]string{
+						"minor": "10000",
+						"major": "10100",
+					},
+				},
+				"port.overlay": {
+					Allocator: "range",
+					Config: map[string]string{
+						"minor": "10000",
+						"major": "10100",
+					},
+				},
 			},
 		}, config)
 	})

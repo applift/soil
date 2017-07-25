@@ -11,7 +11,7 @@ import (
 
 // Agent - specific config
 type Config struct {
-	//Id string
+	Resource map[string]*Resource
 	Meta  map[string]string `hcl:"meta" json:"meta"`
 	Drain bool
 	Exec  string
@@ -44,6 +44,7 @@ func (c *Config) Unmarshal(r io.Reader) (err error) {
 		return
 	}
 	var failures []error
+
 	if err = hcl.DecodeObject(c, list); err != nil {
 		failures = append(failures, err)
 	}
@@ -73,4 +74,10 @@ func (c *Config) Read(path ...string) (err error) {
 		err = fmt.Errorf("%v", failures)
 	}
 	return
+}
+
+//
+type Resource struct {
+	Allocator string
+	Config map[string]string
 }
